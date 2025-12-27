@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+
 const EditorLayout = ({ children }) => {
     const navRef = useRef(null);
     const sidebarRef = useRef(null);
@@ -44,7 +45,7 @@ const EditorLayout = ({ children }) => {
     return (
         <div className="h-screen flex flex-col bg-gradient-to-br from-[#0f0f0f] to-[#151515] text-white">
 
-           
+
             <div
                 ref={navRef}
                 className="z-10 h-14 px-6 flex items-center justify-between border-b border-white/10 backdrop-blur"
@@ -56,33 +57,35 @@ const EditorLayout = ({ children }) => {
                 <button className="bg-indigo-500 hover:bg-indigo-600 transition px-4 py-1 rounded-md shadow-lg">
                     Export
                 </button>
+
             </div>
 
             <div className="flex flex-1">
 
-               
+
                 <div
                     ref={sidebarRef}
-                    className="z-10 w-16 bg-[#111] border-r border-white/10 flex flex-col items-center gap-6 pt-6"
+                    className="z-16 w-16 bg-[#111] border-r border-white/10 flex flex-col items-center gap-6 pt-6"
                 >
                     {["✂️", "🎨", "🔤", "🔄"].map((icon, i) => (
                         <button
                             key={i}
                             ref={el => toolsRef.current[i] = el}
-                            className="text-xl w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition hover:scale-110"
+                            className="text-xl z-16 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/80 transition hover:scale-110 text-white"
                         >
                             {icon}
                         </button>
                     ))}
                 </div>
 
-              
+
                 <div className="flex-1 flex items-center justify-center bg-[#151515] relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-pink-500/5 blur-3xl" />
                     {children}
                 </div>
 
             </div>
+
         </div>
     );
 };
